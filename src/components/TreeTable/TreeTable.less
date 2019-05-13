@@ -1,0 +1,131 @@
+@import '~style/variables.less';
+@import '~style/border.less';
+@import '~style/mixins.less';
+
+.tree-table-wrap {
+    overflow-x: auto;
+    .key-wrap {
+        display: flex;
+        padding: 8*@ptr 15*@ptr 8*@ptr 0;
+        height: 48*@ptr;
+
+        .label {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            .PingFangSC-Light;
+            font-size: 12*@ptr;
+            color: @color-text-gray-light;
+            line-height: 16*@ptr;
+
+            .text {
+                text-align: right;
+                width: 60*@ptr;
+            }
+        }
+
+        .label.left {
+            padding-left: 15*@ptr;
+            justify-content: flex-start;
+            .text {
+                text-align: left;
+            }
+        }
+
+        .icon-wrap {
+            position: relative;
+            width: 8*@ptr;
+
+            .ascend {
+                position: absolute;
+                left: 0;
+                top: -2*@ptr;
+            }
+
+            .descend {
+                position: absolute;
+                left: 0;
+                top: 4*@ptr;
+            }
+
+        }
+    }
+
+    .table-wrap {
+        table {
+            min-width: 100%;
+
+            thead {
+                tr {
+                    height: 48*@ptr;
+                    background-color: @color-bg-gray-light;
+                    th {
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        .content {
+                            position: relative;
+                            padding: 17*@ptr 15*@ptr 17*@ptr 0;
+                            min-width: 84*@ptr;
+                            height: 70*@ptr;
+                            display: flex;
+                            flex-flow: column;
+                            align-items: flex-end;
+                            .border-bottom(rgba(0,0,0,0.05));
+
+                            .tree-wrap {
+                                i.icon {
+                                    font-size: 12*@ptr;
+                                    color: @color-text-gray;
+                                }
+                            }
+                        } 
+
+                        .content.left {
+                            padding: 0;
+                            &:after {
+                                display: none;
+                            }
+                            .tree-wrap {
+                                position: relative;
+                                padding: 17*@ptr 15*@ptr 17*@ptr 0;
+                                width: 100%;
+                                height: 100%;
+                                .border-bottom(rgba(0,0,0,0.05));
+                            }
+                            padding-left: 15*@ptr;
+                            align-items: flex-start;
+                        }
+                    }
+                }
+
+                tr.children {
+                    background-color: @color-bg-gray;
+                }
+            }
+
+        }
+    }
+
+    .fix-header-wrap {
+        z-index: 10;
+        position: fixed;
+        top: 44*@ptr;
+        background-color: @color-bg-gray-light;
+        display: none;
+        .fix-header {
+            display: inline-block;
+        }
+    }
+
+    .show-fixed-header {
+        .fix-header-wrap {
+            display: block;
+        }
+    }
+}
