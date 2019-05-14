@@ -16,6 +16,9 @@
 + 支持排序
 + 支持固定列
 
+## 效果图
+![](https://github.com/zuopf769/simple-tree-grid/blob/master/public/WechatIMG66.png)
+
 
 ## 数据格式
 
