@@ -1,5 +1,9 @@
 # 基于vue的简单tree grid组件
 
+### [左鹏飞](https://github.com/zuopf769)  2019.05.14
+
+[代码](https://github.com/zuopf769/simple-tree-grid/blob/master/src/components/TreeTable/index.vue)
+
 
 ## 背景
 
@@ -228,4 +232,57 @@ if (this.isScrolled) {
 ## 单元格内容可以自定义，如何可能每个单元格内容都不一样？
 
 
+这个我查阅了市面上的方案，具体方案有两种：
++ 方案一： 给每一列设置render函数，在render函数中传如rowdata、rowIndex等，返回html，然后再td单元格的地方v-html
++ 方案二： 动态slot，按照field设置动态slot；我目前的方案只是预制了两个slot, 用showIcon来表示展示属性展开图标的slot,和其他的普通slot
 
+```
+  <slot :name="todo" :todo="todo">
+```
+
+具体使用的时候
+
+```
+ <tree-table>
+    <!--tree单元格-->
+    <template v-slot:tree="{cellData, cellIndex}">
+        <span class="value">{{ cellData.showVal }}</span>
+    </template>
+    <!--普通单元格-->
+    <template v-slot="{cellData, cellIndex}">
+        <div class="value">{{ cellData.showVal }}</div>
+        <div class="relative"
+            v-if="cellIndex !== 0"
+            :class="indicatorsClass(cellData.relativeDataType, cellData.indicatorChangeCode)">
+            <span class="precent">6.6%</span>
+            <i class="iconfont"></i>
+        </div>
+    </template>
+</tree-table>
+```
+
+## 如何支持排序？
+
+表格的排序，我目前的方案是后端排序。
+
+如果是前端排序，需要考虑是按行优先，还是列优先；如果按行来画，排序、列换序需要整个数据都排序；
+
+
+## 如何支持固定列？
+
+如何支持固定列，目前我采用的左侧一个table，右侧一个table，用户需要传一个 
+
+```
+// 从去掉左侧固定列的index开始
+beginIdx: {
+    type: Number,
+    default: 0
+}
+```
+
+然后再组件内部来做切割
+
+
+## 参考资料
+
++ [vuetable2](https://github.com/ratiw/vuetable-2)
