@@ -270,7 +270,7 @@ if (this.isScrolled) {
 
 ## 如何支持固定列？
 
-如何支持固定列，目前我采用的左侧一个table，右侧一个table，用户需要传一个 
+如何支持固定列，目前我采用的方案是新封装个scrollTable组件左侧一个table，右侧一个table，用户需要传一个 
 
 ```
 // 从去掉左侧固定列的index开始
@@ -286,3 +286,5 @@ beginIdx: {
 ## 参考资料
 
 + [vuetable2](https://github.com/ratiw/vuetable-2)
++ [vue-tree-grid](https://github.com/huanglong6828/vue-tree-grid)
++ [vuejs学习--递归组件(树型表格分享)](https://www.cnblogs.com/ychl/p/6075106.html)
